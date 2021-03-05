@@ -8,6 +8,6 @@ class Twilio extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return Arkitecht\Twilio::class;
+        return \Arkitecht\Twilio\Twilio::class;
     }
 }

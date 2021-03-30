@@ -18,8 +18,8 @@ class Twilio
 
     public function sendMessage($to, $body)
     {
-        return $this->client
-            ->messages
+        return $this
+            ->messages()
             ->create($this->formatNumber($to), // to
                 [
                     "messagingServiceSid" => config('twilio.messaging_service'),
@@ -28,9 +28,42 @@ class Twilio
             );
     }
 
+    public function client()
+    {
+        return $this->client;
+    }
+
+    public function calls($args = null)
+    {
+        if (!$args) {
+            return $this->client->calls;
+        }
+
+        return $this->client->calls($args);
+    }
+
+    public function conferences($args = null)
+    {
+        if (!$args) {
+            return $this->client->conferences;
+        }
+
+        return $this->client->conferences($args);
+    }
+
+    public function messages($args = null)
+    {
+        if (!$args) {
+            return $this->client->messages;
+        }
+
+        return $this->client->messages($args);
+    }
+
     public function makeCall($to, $from, $parameters)
     {
-        return $this->client->calls
+        return $this
+            ->calls()
             ->create($this->formatNumber($to), // to
                 $this->formatNumber($from), // from
                 $parameters

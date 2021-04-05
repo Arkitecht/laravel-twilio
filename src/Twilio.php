@@ -60,6 +60,15 @@ class Twilio
         return $this->client->messages($args);
     }
 
+    public function numbers($args = null)
+    {
+        if (!$args) {
+            return $this->client->incomingPhoneNumbers->read();
+        }
+
+        return $this->client->incomingPhoneNumbers($args);
+    }
+
     public function makeCall($to, $from, $parameters)
     {
         return $this
@@ -77,5 +86,10 @@ class Twilio
         }
 
         return $number;
+    }
+
+    public static function cleanNumber($number)
+    {
+        return preg_replace('/^\+1/', '', $number);
     }
 }

@@ -79,6 +79,28 @@ class Twilio
             );
     }
 
+    public function lookup($number, $carrier = true, $name = false, $countryCode = 'US')
+    {
+        $types = [];
+        if ($carrier) {
+            $types[] = 'carrier';
+        }
+        if ($name) {
+            $types[] = 'aller-name';
+        }
+        $fetchParams = [
+            "countryCode" => $countryCode,
+            "type"        => $types,
+        ];
+
+        return $this
+            ->client
+            ->lookups
+            ->v1
+            ->phoneNumbers($this->formatNumber($number))
+            ->fetch($fetchParams);
+    }
+
     public static function formatNumber($number)
     {
         if (!preg_match('/^\+1/', $number)) {

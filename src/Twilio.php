@@ -86,7 +86,7 @@ class Twilio
             $types[] = 'carrier';
         }
         if ($name) {
-            $types[] = 'aller-name';
+            $types[] = 'caller-name';
         }
         $fetchParams = [
             "countryCode" => $countryCode,

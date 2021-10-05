@@ -101,6 +101,16 @@ class Twilio
             ->fetch($fetchParams);
     }
 
+    public function raw($url, $method = 'GET', $params = [], $data = [], $headers = [])
+    {
+        $response = $this->client->request($method, $url, $params, $data, $headers);
+        $reflection = new \ReflectionClass($response);
+        $property = $reflection->getProperty('content');
+        $property->setAccessible(true);
+
+        return $property->getValue($response);
+    }
+
     public static function formatNumber($number)
     {
         if (!preg_match('/^\+1/', $number)) {

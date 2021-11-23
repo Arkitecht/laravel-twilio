@@ -5,7 +5,7 @@ namespace Arkitecht\Twilio\Providers;
 use Arkitecht\Twilio\Twilio;
 use Illuminate\Support\ServiceProvider;
 
-class TwilioServerProvider extends ServiceProvider
+class TwilioServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.

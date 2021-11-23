@@ -21,5 +21,15 @@
     "psr-4": {
       "Arkitecht\\Twilio\\": "src/"
     }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Arkitecht\\Twilio\\Providers\\TwilioServiceProvider"
+      ],
+      "aliases": {
+        "Twilio": "Arkitecht\\Twilio\\Facades\\Twilio"
+      }
+    }
   }
 }

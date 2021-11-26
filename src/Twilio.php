@@ -16,15 +16,20 @@ class Twilio
         $this->client = new Client($clientSid, $clientToken);
     }
 
-    public function sendMessage($to, $body)
+    public function sendMessage($to, $body, $url = null)
     {
+        $request = [
+            "messagingServiceSid" => config('twilio.messaging_service'),
+            "body"                => $body,
+        ];
+        if ($url) {
+            $request['mediaUrl'] = [$url];
+        }
+
         return $this
             ->messages()
             ->create($this->formatNumber($to), // to
-                [
-                    "messagingServiceSid" => config('twilio.messaging_service'),
-                    "body"                => $body,
-                ]
+                $request
             );
     }
 

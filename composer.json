@@ -3,8 +3,8 @@
   "description": "Laravel Wrapper for the Twilio Rest Client",
   "type": "library",
   "require": {
-    "twilio/sdk": "^6.18",
-    "illuminate/support": "^9|^8|^7|^6|^5"
+    "twilio/sdk": "^6.18|^7",
+    "illuminate/support": "^10|^9|^8|^7|^6|^5"
   },
   "require-dev": {
     "orchestra/testbench": "^6.13",
